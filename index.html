@@ -14,14 +14,17 @@
     <div class="card-form">
 
       <div class="form-header">
-        <h1 class="form-header-title">Book Club Membership</h1>
+        <h1 class="form-header-title">BL Book Club Sign up</h1>
         <p class="form-header-sub">Fill in your details to receive your card</p>
       </div>
 
       <div class="form-body">
+
         <div class="field-group">
           <label class="field-label">Card Style</label>
-          <div class="style-picker" id="style-picker"></div>
+          <div class="style-picker" id="style-picker">
+            <!-- Populated by main.js from CARD_STYLES -->
+          </div>
         </div>
 
         <div class="field-group">
@@ -31,12 +34,13 @@
 
         <div class="field-group">
           <label class="field-label">Favourite Book</label>
-          <input class="field-input" id="f-book" placeholder="e.g. Pride and Prejudice"/>
+          <input class="field-input" id="f-book" placeholder="e.g. Anything tbh..."/>
         </div>
 
         <div class="field-group">
           <label class="field-label">Issued Date</label>
-          <input class="field-input" id="f-date" type="date"/>
+          <div class="id-display" id="f-date-display"></div>
+          <input type="hidden" id="f-date"/>
         </div>
 
         <div class="field-group">
@@ -59,8 +63,8 @@
         </div>
 
         <div class="field-group">
-          <label class="field-label">Credits <span class="field-note">(optional)</span></label>
-          <input class="field-input" id="f-credits" placeholder="e.g. Founding Member · 12 books read"/>
+          <label class="field-label">Art Credit <span class="field-note"></span></label>
+          <input class="field-input" id="f-credits" placeholder="e.g. Artist Name"/>
         </div>
 
         <button class="signup-btn" id="signup-btn">Issue My Card</button>
