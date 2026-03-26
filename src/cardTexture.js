@@ -79,9 +79,9 @@ export const CARD_STYLES = [
   {
     id:        'yellow',           
     label:     'Yellow',           
-    front:     `${BASE}Member_card_Sage_Yellow_ver.png`,   
+    front:     `${BASE}Member_card_Yellow_ver.png`,   
     back:      null,    
-    preview:   `${BASE}Member_card_Sage_Yellow_ver.png`,   
+    preview:   `${BASE}Member_card_Yellow_ver.png`,   
     fontColor: '#FFD800'
   },
 ];
