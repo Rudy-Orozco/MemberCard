@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Book Club — Membership</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/src/style.css"/>
+</head>
+<body>
+
+  <div id="form-overlay">
+    <div class="card-form">
+
+      <div class="form-header">
+        <span class="form-header-icon">📖</span>
+        <h1 class="form-header-title">BL Book Club Sign-up</h1>
+        <p class="form-header-sub">Fill in your details to receive your card</p>
+      </div>
+
+      <div class="form-body">
+
+        <!-- Single name field -->
+        <div class="field-group">
+          <label class="field-label">Full Name <span class="req">*</span></label>
+          <input class="field-input" id="f-name" placeholder="Jane Doe"/>
+        </div>
+
+        <!-- Favourite book -->
+        <div class="field-group">
+          <label class="field-label">Favourite Book</label>
+          <input class="field-input" id="f-book" placeholder="e.g. Pride and Prejudice"/>
+        </div>
+
+        <!-- Issued date -->
+        <div class="field-group">
+          <label class="field-label">Issued Date</label>
+          <input class="field-input" id="f-date" type="date"/>
+        </div>
+
+        <!-- ID preview — read only -->
+        <div class="field-group">
+          <label class="field-label">Member ID <span class="field-note">— auto-generated from name</span></label>
+          <div class="id-display" id="id-display">—</div>
+        </div>
+
+        <!-- Photo upload -->
+        <div class="field-group">
+          <label class="field-label">ID Photo <span class="field-note">(optional)</span></label>
+          <div class="photo-upload" id="photo-upload">
+            <div class="photo-upload-inner">
+              <div class="photo-placeholder" id="photo-placeholder">
+                <span class="photo-icon">↑</span>
+                <span class="photo-text">Click to upload a photo</span>
+              </div>
+              <img id="photo-preview" class="photo-preview-img" style="display:none"/>
+            </div>
+            <input type="file" id="f-photo" accept="image/*" style="display:none"/>
+          </div>
+        </div>
+
+        <!-- Credits -->
+        <div class="field-group">
+          <label class="field-label">Art Credits <span class="field-note">(optional)</span></label>
+          <input class="field-input" id="f-credits" placeholder="Artist Name"/>
+        </div>
+
+        <button class="signup-btn" id="signup-btn">Issue My Card</button>
+
+      </div>
+    </div>
+  </div>
+
+  <canvas id="gl"></canvas>
+
+  <div id="welcome">
+    <h2>Welcome, <span id="wname">Member</span>.</h2>
+    <p>Your membership card has been issued</p>
+  </div>
+  <div id="hud">
+    <div class="hud-hint">Click to examine &nbsp;·&nbsp; move mouse to rotate &nbsp;·&nbsp; click to flip &nbsp;·&nbsp; double-click to set down</div>
+    <button class="save-btn" id="save-btn">↓ Save Card as PNG</button>
+  </div>
+
+  <canvas id="tc-front" width="1024" height="576"></canvas>
+  <canvas id="tc-back"  width="1024" height="576"></canvas>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
