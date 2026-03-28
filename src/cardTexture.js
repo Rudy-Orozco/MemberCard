@@ -54,7 +54,7 @@ export const CARD_STYLES = [
   },
   {
     id:        'purple',           
-    label:     'Purple',           
+    label:     'Dark Purple',           
     front:     `${BASE}Member_card_Purple_ver.png`,   
     back:      null,    
     preview:   `${BASE}Member_card_Purple_ver.png`,   
@@ -83,6 +83,14 @@ export const CARD_STYLES = [
     back:      null,    
     preview:   `${BASE}Member_card_Yellow_ver.png`,   
     fontColor: '#FFD800'
+  },
+    {
+    id:        'purple2',           
+    label:     'Purple',           
+    front:     `${BASE}Member_card_Purple_ver.png`,   
+    back:      null,    
+    preview:   `${BASE}Member_card_Purple_ver.png`,   
+    fontColor: '#790BEA'
   },
 ];
 
