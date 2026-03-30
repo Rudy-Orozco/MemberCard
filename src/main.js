@@ -200,6 +200,11 @@ function init() {
     scene.saveCardPng(memberData);
   });
 
+  // ── Discord ──
+  document.getElementById('discord-btn').addEventListener('click', () => {
+    window.open('https://discord.gg/MY65VFcR9', '_blank');
+  });
+
   // ── Vite HMR ──
   if (import.meta.hot) {
     import.meta.hot.accept('./cardTexture.js', () => {
