@@ -299,6 +299,10 @@ body {
   display: block; margin: 16px auto 0;
   pointer-events: all;
 }
+#welcome .save-btn {
+  display: block; margin: 12px auto 0;
+  pointer-events: all;
+}
 
 /* ── HIDDEN TEXTURE CANVASES ── */
 #tc-front, #tc-back { display: none; }

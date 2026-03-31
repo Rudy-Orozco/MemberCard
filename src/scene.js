@@ -28,7 +28,7 @@ export function createScene() {
   // ── Scene & Camera ──
   const scene  = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(42, innerWidth / innerHeight, 0.01, 100);
-  camera.position.set(0, 3.2, 7);
+  camera.position.set(0, 1.7, 7);
   camera.lookAt(0, 0, 0);
 
   // ── Lights ──
