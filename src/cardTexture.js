@@ -114,6 +114,60 @@ function getImg(src) {
   return imageCache[src] || null;
 }
 
+// ──────────────────────────────────────────
+//  TEXT MEASUREMENT & WRAPPING
+// ──────────────────────────────────────────
+
+// Fit text within a 321x48 box by wrapping and shrinking
+function drawFittedText(ctx, text, x, y, maxFontSize, boxWidth = 321, boxHeight = 48) {
+  if (!text) return;
+  
+  let fontSize = maxFontSize;
+  
+  while (fontSize >= 12) {
+    ctx.font = `600 ${fontSize}px "Inter", sans-serif`;
+    ctx.textBaseline = 'middle';
+    
+    const lineHeight = fontSize * 1.2;
+    const words = text.split(/\s+/).filter(w => w.length > 0);
+    let lines = [];
+    let currentLine = '';
+    
+    // Wrap text
+    for (let word of words) {
+      const testLine = currentLine ? currentLine + ' ' + word : word;
+      const width = ctx.measureText(testLine).width;
+      
+      if (width <= boxWidth) {
+        currentLine = testLine;
+      } else {
+        if (currentLine) lines.push(currentLine);
+        currentLine = word;
+      }
+    }
+    if (currentLine) lines.push(currentLine);
+    
+    // Check if fits in box
+    const totalHeight = (lines.length - 1) * lineHeight + fontSize;
+    if (totalHeight <= boxHeight) {
+      // Vertically center within box using middle baseline
+      const startY = y - (lines.length - 1) * lineHeight / 2;
+      
+      for (let i = 0; i < lines.length; i++) {
+        ctx.fillText(lines[i], x, startY + i * lineHeight);
+      }
+      return;
+    }
+    
+    fontSize -= 2;
+  }
+  
+  // Fallback
+  ctx.font = `600 12px "Inter", sans-serif`;
+  ctx.textBaseline = 'middle';
+  ctx.fillText(text.substring(0, 30) + '...', x, y);
+}
+
 // ─────────────────────────────────────────
 //  FRONT FACE
 // ─────────────────────────────────────────
@@ -137,30 +191,30 @@ export function drawFront(ctx, data) {
   const flip = -39;
   // Member name
   ctx.fillStyle = style.fontColor;
-  ctx.font = '600 40px "Inter", sans-serif';
-  ctx.textAlign = 'left';
-  ctx.fillText(data.name, 569, 196-flip);
+  drawFittedText(ctx, data.name, 569, 184-flip, 40);
 
   // Member ID
   ctx.fillStyle = style.fontColor;
   ctx.font = '600 40px "Inter", sans-serif';
-  ctx.fillText(data.id, 518, 258-flip);
+  ctx.textAlign = 'left';
+  ctx.fillText(data.id, 518, 248-flip);
 
   // Favourite book
   ctx.fillStyle = style.fontColor;
-  ctx.font = '600 40px "Inter", sans-serif';
-  ctx.fillText(data.book, 585, 325-flip);
+  drawFittedText(ctx, data.book, 585, 310-flip, 40);
 
   // Issued date
   ctx.fillStyle = style.fontColor;
   ctx.font = '600 40px "Inter", sans-serif';
-  ctx.fillText(data.issued, 578, 390-flip);
+  ctx.textAlign = 'left';
+  ctx.fillText(data.issued, 578, 376-flip);
 
   // Credits
   if (data.credits) {
     ctx.fillStyle = style.fontColor;
     ctx.font = '400 32px "Inter", sans-serif';
-    ctx.fillText(data.credits, 193, 489-flip-8);
+    ctx.textAlign = 'left';
+    ctx.fillText(data.credits, 193, 479-flip-8);
   }
 
   // Photo

@@ -263,7 +263,7 @@ body {
   font-size: 9px; letter-spacing: .12em; text-transform: uppercase;
   color: rgba(0,0,0,.32); text-align: center;
   font-family: 'DM Mono', monospace;
-  line-height: 1.5;
+  line-height: 1.5; white-space: nowrap;
 }
 .save-btn, .discord-btn {
   padding: 10px 28px;
